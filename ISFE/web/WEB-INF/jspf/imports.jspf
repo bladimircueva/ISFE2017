@@ -1,0 +1,11 @@
+<link rel="stylesheet" href="<%= request.getContextPath()%>/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<%= request.getContextPath()%>/css/bootstrap-theme.min.css" rel="stylesheet">
+<link href="<%= request.getContextPath()%>/js/jtable.2.3.1/themes/metro/darkgray/jtable.css" rel="stylesheet" type="text/css" />
+<link href="<%= request.getContextPath()%>/css/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
+<script src="<%= request.getContextPath()%>/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath()%>/js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath()%>/js/jquery.jtable.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath()%>/js/jquery.hotkeys-0.7.9.min.js" type="text/javascript"></script>
+<link href="<%= request.getContextPath()%>/js/validationEngine/validationEngine.jquery.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="<%= request.getContextPath()%>/js/validationEngine/jquery.validationEngine.js"></script>
+<script type="text/javascript" src="<%= request.getContextPath()%>/js/validationEngine/jquery.validationEngine-es.js"></script>

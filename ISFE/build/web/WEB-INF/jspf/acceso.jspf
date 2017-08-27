@@ -1,0 +1,10 @@
+<%
+    try {
+        String varUsuNombre = session.getAttribute("session_usu_nombreusuario").toString();
+        if (varUsuNombre == null) {
+            response.sendRedirect("/ISFE/");
+        }
+    } catch (Exception e) {
+        response.sendRedirect("/ISFE/");
+    }
+%>

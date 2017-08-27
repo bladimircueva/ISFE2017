@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/ISFE">
+    <!-- EL DRIVER CLASS NAME VARIA SEGUN LA BASE DE DATOS, EN ESTE CASO SE USA EL DE SQL SERVER -->
+    <!-- EL URL ES LA DIRECCION Y PUERTO A DONDE SE APUNTA EL SERVIDOR CON LAS RESPECTIVA DB -->
+    <Resource name="jdbc/isfe2017_db" auth="Container" type="javax.sql.DataSource" 
+              driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver" 
+              url="jdbc:sqlserver://localhost:1433;databaseName=isfe2017_db"
+              username="isfe_conexion" 
+              password="isfe"
+    />
+</Context>
+    
