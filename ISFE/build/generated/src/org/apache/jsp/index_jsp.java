@@ -99,7 +99,7 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    var usuario = varConexion.responseText.trim();\n");
       out.write("                    if (usuario === 'true') \n");
       out.write("                    {\n");
-      out.write("                       parent.location.href = \"/ISFE/VISTA/Principal/main.jsp\";\n");
+      out.write("                       parent.location.href = \"/ISFE/VISTA/Principal/mainbootstrap.jsp\";\n");
       out.write("                    }\n");
       out.write("                    else\n");
       out.write("                    {\n");
@@ -186,6 +186,10 @@ public final class index_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                <input type=\"button\" id=\"frmIngresar\" onclick=\"recuperarDatos();\"  value=\"Iniciar Sesion\">\n");
       out.write("            </form>\n");
       out.write("        </div>\n");
+      out.write("         <div id=\"footer\">\n");
+      out.write("            <a href=\"#\" target=\"_blank\"> <img src=\"css/images/logoisfe.png\"></a>\n");
+      out.write("            <p>ISFE Contratistas Generales S.A.C.</p><br>\n");
+      out.write("         </div><\n");
       out.write("    </body>\n");
       out.write("</html>\n");
     } catch (Throwable t) {

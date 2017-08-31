@@ -81,7 +81,7 @@ input {
 }
 
 #login input[type="button"] {
-	background: #009200;
+	background: #4bb1cf;
 	border: 1px solid #391515;
 	border-radius: 5px;
 	color: #fff;
@@ -93,7 +93,7 @@ input {
 }
 
 #login input[type="button"]:hover {
-	background: #009200;
+	background: #006dcc;
 }
 
 html, body, div, span, applet, object, iframe,

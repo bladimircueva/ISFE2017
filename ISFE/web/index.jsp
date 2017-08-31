@@ -50,7 +50,7 @@
                     var usuario = varConexion.responseText.trim();
                     if (usuario === 'true') 
                     {
-                       parent.location.href = "/ISFE/VISTA/Principal/main.jsp";
+                       parent.location.href = "/ISFE/VISTA/Principal/mainbootstrap.jsp";
                     }
                     else
                     {
@@ -137,5 +137,9 @@
                 <input type="button" id="frmIngresar" onclick="recuperarDatos();"  value="Iniciar Sesion">
             </form>
         </div>
+         <div id="footer">
+            <a href="#" target="_blank"> <img src="css/images/logoisfe.png"></a>
+            <p>ISFE Contratistas Generales S.A.C.</p><br>
+         </div><
     </body>
 </html>
