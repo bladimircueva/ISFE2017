@@ -41,7 +41,7 @@ public class clsRoles {
             String varSql = "SELECT \n"
                     +" * \n"
                     +" FROM \n"
-                    +" ROL;";
+                    +" "+varNombreTabla+";";
             PreparedStatement varPst = varClsConexion.getConexion().prepareStatement(varSql);
             ResultSet varResultado = varPst.executeQuery();
             System.out.println("RESULTADO DE LA COSNULTA" + varSql);

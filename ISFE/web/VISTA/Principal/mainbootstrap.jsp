@@ -41,7 +41,7 @@
 <body>
     <div style='background: #e3e3e3;' align='left' ><text style="color: black; font-family: serif">ISFE - Bienvenido Sr.<%=session.getAttribute("session_usu_nombreusuario")%></text>
             <div style="float: right;" >
-                        <a href = "../../ser_IniciarSesion?parAccion=cerrar_sesion" style="text-decoration: none;font-size: 11.9px; font-weight: bold; text-rendering: optimizelegibility;" >
+                        <a href = "../../srvUsuarios?parAccion=create" style="text-decoration: none;font-size: 11.9px; font-weight: bold; text-rendering: optimizelegibility;" >
                             <font color="black">Registrar Usuario | </font>
                         </a>
                 <a class="glyphicon glyphicon-user" href = "../../ser_IniciarSesion?parAccion=cerrar_sesion" style="text-decoration: none;font-size: 11.9px; font-weight: bold; text-rendering: optimizelegibility;" >
@@ -99,6 +99,7 @@
                                         <li><a href="../MAESTROS/Marca/index.jsp" target="container"><span>Marca</span></a></li>
                                         <li><a href="../MAESTROS/Maquinaria/index.jsp" target="container"><span>Maquinaria</span></a></li>
                                         <li><a href="../MAESTROS/Profesion/index.jsp" target="container"><span>Profesion</span></a></li>
+                                        <li><a href="../MAESTROS/Usuario/index.jsp" target="container"><span>Usuarios</span></a></li>
                                 </ul>
                         </li>
 		</ul>

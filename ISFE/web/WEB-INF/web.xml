@@ -28,6 +28,10 @@
         <servlet-name>srvMaterial</servlet-name>
         <servlet-class>Controlador.srvMaterial</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>srvUsuarios</servlet-name>
+        <servlet-class>Controlador.srvUsuarios</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ser_IniciarSesion</servlet-name>
         <url-pattern>/ser_IniciarSesion</url-pattern>
@@ -55,6 +59,10 @@
     <servlet-mapping>
         <servlet-name>srvMaterial</servlet-name>
         <url-pattern>/srvMaterial</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>srvUsuarios</servlet-name>
+        <url-pattern>/srvUsuarios</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
