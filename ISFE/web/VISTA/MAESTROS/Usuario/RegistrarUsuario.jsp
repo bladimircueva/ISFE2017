@@ -1,151 +1,182 @@
-<%-- 
-    Document   : RegistrarUsuario
-    Created on : 31-ago-2017, 19:37:20
-    Author     : Blad
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
 <html>
-         <head>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE-edge">
+ <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+<!--Include Web Project Style File (If any)-->
+<link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+<!--Include JQuery Style File-->
+<link href="../../../css/jquery-ui-1.10.3.custom.css" rel="stylesheet" type="text/css" />
+<!--Include JQuery File-->
+<script type="text/javascript" language="Javascript" src="../../../js/jquery.min.js"></script>
+<!--Include JQuery UI File-->
+<script type="text/javascript" language="Javascript" src="../../../js/jquery-ui.min.js"></script>
+ 
+<style type="text/css">
+    body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
 
-                 <title>Formulario de Registro</title>
-                 
-                 
-          <style type="text/css" >
+/* Everything but the jumbotron gets side spacing for mobile first views */
+.header,
+.marketing,
+.footer {
+  padding-right: 15px;
+  padding-left: 15px;
+}
 
-.Estilo1 {
- color: #FFFFFF;
- font-weight: bold;
-         }
+/* Custom page header */
+.header {
+  border-bottom: 1px solid #e5e5e5;
+}
+/* Make the masthead heading the same height as the navigation */
+.header h3 {
+  padding-bottom: 19px;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 40px;
+}
 
-body,td,th 
-        {
- font-family: Arial, Helvetica, sans-serif;
- font-size: 12px;
-        }
+/* Custom page footer */
+.footer {
+  padding-top: 19px;
+  color: #777;
+  border-top: 1px solid #e5e5e5;
+}
 
+/* Customize container */
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+}
+.container-narrow > hr {
+  margin: 30px 0;
+}
 
-input:hover
-        {
-          background-color:#FFFF99
-        }
-input
-        { 
-         background-color:#D7D7FF;
-         text-transform:uppercase;
-        }
+/* Main marketing message and sign up button */
+.jumbotron {
+  text-align: center;
+  border-bottom: 1px solid #e5e5e5;
+}
+.jumbotron .btn {
+  padding: 14px 24px;
+  font-size: 21px;
+}
 
+/* Supporting marketing content */
+.marketing {
+  margin: 40px 0;
+}
+.marketing p + h4 {
+  margin-top: 28px;
+}
 
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-right: 0;
+    padding-left: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+</style>
 
-         </style>
-
-         </head>
-
-         <body>
-
-         <form name="form" method="post" action="">
-  
-            <table width="393" border="0" align="center" cellpadding="5" cellspacing="1" bgcolor="#999999">
-<tr>
-                  <td colspan="2" align="center" bgcolor="#0066CC">
-                  <span class="Estilo1">Registro de postulante</span> </td>
-             </tr>
-<tr>
-                 <td width="110" bgcolor="#D7D7FF"><strong>Nombres</strong></td>
-                 <td width="260" bgcolor="#FFFFFF">   
-                 <input name="nombres" type="text" id="nombres" />      </td>
-             </tr>
-<tr>
-                 <td bgcolor="#D7D7FF"><strong>Apellido Paterno </strong></td>
-                 <td bgcolor="#FFFFFF"><input name="apellidopaterno" type="text"/></td>
-    </tr>
-<tr>
-      <td bgcolor="#D7D7FF"><strong>Apellido Materno </strong></td>
-      <td bgcolor="#FFFFFF"><input name="apellidomaterno" type="text" /></td>
-    </tr>
-<tr>
-      <td bgcolor="#D7D7FF"><strong>Sexo</strong></td>
-      <td bgcolor="#FFFFFF">
-        <input name="sexo" type="radio"/> Masculino
-        <input name="sexo" type="radio"/> Femenino </td>
-    </tr>
-<tr>
-      <td bgcolor="#D7D7FF"><strong>DNI</strong></td>
-      <td bgcolor="#FFFFFF"><input name="dni" type="text" size="8" maxlength="8" /></td>
-    </tr>
-<tr>
-      <td bgcolor="#D7D7FF"><strong>Dirección</strong></td>
-      <td bgcolor="#FFFFFF"><input name="direccion" type="text" size="40" /></td>
-    </tr>
-<tr>
-      <td bgcolor="#D7D7FF"><strong>Email</strong></td>
-      <td bgcolor="#FFFFFF"><input name="email" type="text" size="40" /></td>
-    </tr>
-<tr>
-      <td bgcolor="#D7D7FF"><strong>Ciudad</strong></td>
-      <td bgcolor="#FFFFFF">
-        <select name="ciudad" id="ciudad">
-          <option value="">Seleccione</option>
-          <option value="1">Lima</option>
-          <option value="2">Tarapoto</option>
-          <option value="3">Cusco</option>
-          <option value="4">Iquitos</option>
-          <option value="5">Tacna</option>
-          <option value="7">Piura</option>
-          <option value="8">Chiclayo</option>
-          <option value="9">Tumbes</option>
-        </select>     
-     </td>
-
-</tr>
-<tr>
-      <td bgcolor="#D7D7FF"><strong>Carrera</strong></td>
-      <td bgcolor="#FFFFFF">
-
-     <select name="carrera" id="carrera">
-        <option value="">Seleccione</option>
-        <option value="1">Ingeniería de Sistemas e Infromática</option>
-        <option value="2">Ingeniería Civil</option>
-        <option value="3">Arquitectura</option>
-        <option value="4">Ingeniería Agroindustrial</option>
-        <option value="5">Medicina Humana</option>
-        <option value="6">Medicina Veterianaria</option>
-     </select>
-      </td>
-
-</tr>
-<tr>
-      <td bgcolor="#D7D7FF"><strong>Colegio</strong></td>
-      <td bgcolor="#FFFFFF"><input name="colegio" type="text" id="colegio" size="40" /></td>
+</head>
+<body>
+ 
+<a id="hlOpenMe" runat="server" href="#">Click Me to Open Dialog Box</a>
+ 
+<div id="dialog" title="My Dialog Title">
     
-</tr>
-<tr>
-      <td bgcolor="#D7D7FF"><strong>Tipo Colegio </strong></td>
-      <td bgcolor="#FFFFFF"><input name="tipocolegio" type="radio" value="radiobutton" />
-Nacional
-  <input name="tipocolegio" type="radio" value="radiobutton" /> 
-  Privado</td>
-    </tr>
-<tr>
-      <td bgcolor="#D7D7FF"><strong>Intereses</strong></td>
-      <td bgcolor="#FFFFFF">
-           <input type="checkbox"  value="checkbox" />Matemáticas<br>
-     <input type="checkbox"  value="checkbox" />Literatura<br>
-     <input type="checkbox"  value="checkbox" />Historia<br>
-     <input type="checkbox"  value="checkbox" />Botánica<br>
-     <input type="checkbox"  value="checkbox" />Medicina<br>
-            <input type="checkbox" value="checkbox" />Agro  
-      </td>
+<div class="container">
+    <h1 class="well">Registration Form</h1>
+	<div class="col-lg-12 well">
+	<div class="row">
+				<form>
+					<div class="col-sm-12">
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>First Name</label>
+								<input type="text" placeholder="Enter First Name Here.." class="form-control">
+							</div>
+							<div class="col-sm-6 form-group">
+								<label>Last Name</label>
+								<input type="text" placeholder="Enter Last Name Here.." class="form-control">
+							</div>
+						</div>					
+						<div class="form-group">
+							<label>Address</label>
+							<textarea placeholder="Enter Address Here.." rows="3" class="form-control"></textarea>
+						</div>	
+						<div class="row">
+							<div class="col-sm-4 form-group">
+								<label>City</label>
+								<input type="text" placeholder="Enter City Name Here.." class="form-control">
+							</div>	
+							<div class="col-sm-4 form-group">
+								<label>State</label>
+								<input type="text" placeholder="Enter State Name Here.." class="form-control">
+							</div>	
+							<div class="col-sm-4 form-group">
+								<label>Zip</label>
+								<input type="text" placeholder="Enter Zip Code Here.." class="form-control">
+							</div>		
+						</div>
+						<div class="row">
+							<div class="col-sm-6 form-group">
+								<label>Title</label>
+								<input type="text" placeholder="Enter Designation Here.." class="form-control">
+							</div>		
+							<div class="col-sm-6 form-group">
+								<label>Company</label>
+								<input type="text" placeholder="Enter Company Name Here.." class="form-control">
+							</div>	
+						</div>						
+					<div class="form-group">
+						<label>Phone Number</label>
+						<input type="text" placeholder="Enter Phone Number Here.." class="form-control">
+					</div>		
+					<div class="form-group">
+						<label>Email Address</label>
+						<input type="text" placeholder="Enter Email Address Here.." class="form-control">
+					</div>	
+					<div class="form-group">
+						<label>Website</label>
+						<input type="text" placeholder="Enter Website Name Here.." class="form-control">
+					</div>
+					<button type="button" class="btn btn-lg btn-info">Submit</button>					
+					</div>
+				</form> 
+				</div>
+	</div>
+	</div>
     
-</tr>
-<tr>
-      <td colspan="2" align="center" bgcolor="#0066CC">
-        <input name="enviar" type="button" id="enviar" value="Enviar" />     
-      </td>
-</tr>
-</table>
-</form>
+   </div>
+ 
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#dialog").dialog({ autoOpen: false });
+ 
+        $("#hlOpenMe").click(
+            function () {
+                $("#dialog").dialog('open');
+                return false;
+            }
+        );
+    });
+</script>
+ 
 </body>
-
 </html>
