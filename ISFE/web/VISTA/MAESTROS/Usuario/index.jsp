@@ -55,13 +55,13 @@
                           edit: true,
                           list:true
                         },
-                         Direccion: {
+                         direccion: {
                           title:'Direccion',
                           create: true,
                           edit: true,
                           list:true
                         },
-                         Telefono: {
+                         telefono: {
                           title:'Telefono',
                           create: true,
                           edit: true,

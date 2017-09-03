@@ -140,28 +140,28 @@
             
     <div id="dialogregistrousuario" title="Dialogo de registro de usuario">
             <div class="container">
-                <h1 class="well">Registration Form</h1>
+                <h1 class="well">REGISTRAR USUARIO</h1>
                     <div class="col-lg-12 well">
                     <div class="row">
 				<form>
 					<div class="col-sm-12">
 						<div class="row">
 							<div class="col-sm-6 form-group">
-								<label>First Name</label>
+								<label>Nombres</label>
 								<input type="text" placeholder="Enter First Name Here.." class="form-control">
 							</div>
 							<div class="col-sm-6 form-group">
-								<label>Last Name</label>
+								<label>Apellidos</label>
 								<input type="text" placeholder="Enter Last Name Here.." class="form-control">
 							</div>
 						</div>					
 						<div class="form-group">
-							<label>Address</label>
+							<label>Direccion</label>
 							<textarea placeholder="Enter Address Here.." rows="3" class="form-control"></textarea>
 						</div>	
 						<div class="row">
 							<div class="col-sm-4 form-group">
-								<label>City</label>
+								<label>E-mail</label>
 								<input type="text" placeholder="Enter City Name Here.." class="form-control">
 							</div>	
 							<div class="col-sm-4 form-group">
