@@ -140,7 +140,7 @@
             
     <div id="dialogregistrousuario" title="Dialogo de registro de usuario">
             <div class="container">
-                <h1 class="well">REGISTRAR USUARIO</h1>
+                <h1 class="well">REGISTRAR USUARIOOOOOOOOOOO</h1>
                     <div class="col-lg-12 well">
                     <div class="row">
 				<form>
