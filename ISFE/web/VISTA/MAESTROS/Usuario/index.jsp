@@ -84,7 +84,8 @@
                           create: true,
                           edit: true,
                           list:true
-                        },
+                        }
+                        
                     },
                     formCreated: function(event, data) {
                         $('.jtable-input > div').css('width','100%');

@@ -60,6 +60,7 @@ public class srvUsuarios extends HttpServlet {
              if (varRequest.getParameter("parAccion").equals("list")) {
                 metLista();
             } else if (varRequest.getParameter("parAccion").equals("create")) {
+                System.out.println("MIERDAAAA");
                 metCrear();
             } else if (varRequest.getParameter("parAccion").equals("delete")) {
                 metEliminar();
@@ -93,8 +94,9 @@ public class srvUsuarios extends HttpServlet {
         String varUsuDni = varRequest.getParameter("dni");
         String varUsuNombreusuario = varRequest.getParameter("nombreusuario");
         String varUsuPassword = varRequest.getParameter("password");
+        String varUsuRol = varRequest.getParameter("listarol") ;
         String UsuCodigo = varSession.getAttribute("session_usu_nombreusuario").toString();
-        JSONObject varJObjectNuevoRegistro = varUsuarios.metNuevo(varUsuNombre,varUsuApellidos,varUsuEmail,varUsuDireccion,varUsuTelefono,varUsuDni,varUsuNombreusuario,varUsuPassword,UsuCodigo);
+        JSONObject varJObjectNuevoRegistro = varUsuarios.metNuevo(varUsuNombre,varUsuApellidos,varUsuEmail,varUsuDireccion,varUsuTelefono,varUsuDni,varUsuNombreusuario,varUsuPassword,varUsuRol,UsuCodigo);
         varOut.print(varJObjectNuevoRegistro);
         
     }

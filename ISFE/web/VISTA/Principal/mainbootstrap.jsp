@@ -88,7 +88,7 @@
                             <span class="sr-only">Close</span>
                         </button>
                         <h4 class="modal-title" id="myModalLabel">
-                            Modal title
+                            Registro de Usuario
                         </h4>
                     </div>
 
@@ -139,7 +139,7 @@
                                 </div>
                                 <div  class="col-md-10">
                                     <label for="menu">Rol</label><br>
-                                    <select id="listarol" class="selectpicker" data-style="btn-primary">
+                                    <select id="listarol"  data-style="btn-primary">
                                         <OPTION VALUE="" selected>--Seleccione--</OPTION>
                                     </select>
 
@@ -156,8 +156,8 @@
                                 data-dismiss="modal">
                             Close
                         </button>
-                        <button type="button" class="btn btn-primary">
-                            Save changes
+                        <button type="button" onclick="GuardarUsuario()" class="btn btn-primary">
+                            Registrar
                         </button>
                     </div>
                 </div>
@@ -231,6 +231,7 @@
     </body>
 
     <script language="Javascript">
+        
         $(document).ready(function ()
         {
             $('#listarol').html('');
@@ -244,10 +245,36 @@
                 console.log(rsp);
                     $('#listarol').append("<option value=" + item.codigo + ">" + item.descripcion + "</option>");
                 });
-            );
+            });
         });
 
-
+function GuardarUsuario()
+        {
+            alert("melasa");
+            
+            var varUsuNombre = $('#nombres').val();
+            var varUsuApellidos = $('#apellidos').val();
+            var varUsuEmail = $('#email').val();
+            var varUsuDireccion = $('#direccion').val();
+            var varUsuTelefono = $('#telefono').val();
+            var varUsuDni = $('#dni').val();
+            var varUsuNombreusuario = $('#nombreusuario').val();
+            var varUsuPassword = $('#password').val();
+            var varUsuRol = $('#listarol').val();
+            
+            $.post('../../srvUsuarios',{
+                parAccion: 'create',
+                nombres: varUsuNombre,
+                apellidos: varUsuApellidos,
+                email: varUsuEmail,
+                direccion: varUsuDireccion,
+                telefono: varUsuTelefono,
+                dni: varUsuDni,
+                nombreusuario: varUsuNombreusuario,
+                password: varUsuPassword,
+                listarol: varUsuRol
+            },function(rsp){alert(rsp);});
+        }
     </script>
 
 </html>

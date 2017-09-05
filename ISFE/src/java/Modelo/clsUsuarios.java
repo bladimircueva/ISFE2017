@@ -71,12 +71,12 @@ public class clsUsuarios {
         
     }
 
-    public JSONObject metNuevo(String varUsuNombre, String varUsuApellidos, String varUsuEmail, String varUsuDireccion, String varUsuTelefono, String varUsuDni, String varUsuNombreusuario, String varUsuPassword, String UsuCodigo) {
+    public JSONObject metNuevo(String varUsuNombre, String varUsuApellidos, String varUsuEmail, String varUsuDireccion, String varUsuTelefono, String varUsuDni, String varUsuNombreusuario, String varUsuPassword,String varUsuRol, String UsuCodigo) {
          JSONObject varJsonObjectResultado = new JSONObject();
         JSONObject varJsonObjectRegistro = new JSONObject();
         
         try {
-            metGuardarDB(varUsuNombre,varUsuApellidos,varUsuEmail,varUsuDireccion,varUsuTelefono,varUsuDni,varUsuNombreusuario,varUsuPassword,UsuCodigo);
+            metGuardarDB(varUsuNombre,varUsuApellidos,varUsuEmail,varUsuDireccion,varUsuTelefono,varUsuDni,varUsuNombreusuario,varUsuPassword,varUsuRol,UsuCodigo);
             
             String varSql = "SELECT \n"
                     +" * \n"
@@ -95,6 +95,7 @@ public class clsUsuarios {
                 varJsonObjectRegistro.put("dni", varResultado.getString("dni"));
                 varJsonObjectRegistro.put("nombreusuario", varResultado.getString("nombreusuario"));
                 varJsonObjectRegistro.put("password", varResultado.getString("password"));
+                varJsonObjectRegistro.put("rol_id", varResultado.getString("rol_id"));
                 varJsonObjectRegistro.put("usuariocreacion", varResultado.getString("usuariocreacion"));
             
              }
@@ -113,7 +114,7 @@ public class clsUsuarios {
         
     }
 
-    private void metGuardarDB(String varUsuNombre, String varUsuApellidos, String varUsuEmail, String varUsuDireccion, String varUsuTelefono, String varUsuDni, String varUsuNombreusuario, String varUsuPassword, String UsuCodigo) {
+    private void metGuardarDB(String varUsuNombre, String varUsuApellidos, String varUsuEmail, String varUsuDireccion, String varUsuTelefono, String varUsuDni, String varUsuNombreusuario, String varUsuPassword,String varUsuRol, String UsuCodigo) {
 
          try {
              Date fechaactual = new Date();
@@ -130,6 +131,7 @@ public class clsUsuarios {
                     + " dni, \n"
                     + " nombreusuario, \n"
                     + " password, \n"
+                    + " rol_id, \n"
                     + " usuariocreacion, \n"
                     + " fechacreacion \n"
                     + " ) \n"
@@ -142,6 +144,7 @@ public class clsUsuarios {
                     + " '" + varUsuDni +"', \n"
                     + " '" + varUsuNombreusuario +"', \n"
                     + " '" + varUsuPassword +"', \n"
+                    + " " + varUsuRol +", \n"
                     + " '" + UsuCodigo + "', \n"
                     + " '"+ convertido + "' \n"
                     + " ); \n";
