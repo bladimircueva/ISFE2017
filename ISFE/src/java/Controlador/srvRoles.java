@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 /**
  *
@@ -48,6 +49,7 @@ public class srvRoles extends HttpServlet {
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        System.out.println("MELASA");
         try {
             varRequest = request;
             varResponse = response;
@@ -62,6 +64,8 @@ public class srvRoles extends HttpServlet {
                 metEliminar();
             } else if (varRequest.getParameter("parAccion").equals("update")) {
                 metModificar();
+            } else if (varRequest.getParameter("parAccion").equals("getListRol")) {
+                metGetListRol();
             }
         } finally {
             out.close();
@@ -97,6 +101,14 @@ public class srvRoles extends HttpServlet {
         varOut.print(varJObjectNuevoRegistro);
     
     }
+    
+    private void metGetListRol() throws SQLException{
+            //varOut.println(varEmpresas.metEmpresasSelect());
+            System.out.println("MELASA");
+            JSONArray JSONArray = varRoles.metListRoles();
+            varOut.print(JSONArray);
+    }
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -145,6 +157,7 @@ public class srvRoles extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
+    
 
 
 }
