@@ -42,6 +42,7 @@
                           create: true,
                           edit: true,
                           list:true
+                          //inputClass: 'validate{required}'
                         },
                         apellidos: {
                             title:'Apellidos',

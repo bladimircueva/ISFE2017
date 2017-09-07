@@ -62,7 +62,7 @@ public class srvUsuarios extends HttpServlet {
                 System.out.println("MIERDAAAA");
                 metCrear();
             } else if (varRequest.getParameter("parAccion").equals("delete")) {
-                metEliminar();
+                metQuitar();
             } else if (varRequest.getParameter("parAccion").equals("update")) {
                 metModificar();
             }
@@ -76,8 +76,9 @@ public class srvUsuarios extends HttpServlet {
     }
 
 
-    private void metEliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void metQuitar()throws SQLException{
+        JSONObject varJObjectLista = varUsuarios.metQuitar(varRequest.getParameter("codigo"));
+        varOut.print(varJObjectLista); 
     }
 
     private void metModificar() {

@@ -14,6 +14,7 @@ import net.sf.json.JSONObject;
 import Modelo.clsConexionISFE;
 import java.util.Date;
 import java.text.SimpleDateFormat;
+import org.apache.commons.dbutils.DbUtils;
 
 /**
  *
@@ -158,6 +159,26 @@ public class clsUsuarios {
             System.out.print(e);
         }
 
+    }
+
+    public JSONObject metQuitar(String valueOf) {
+        JSONObject varJsonObjectResultado = new JSONObject();
+        try {
+            String sql = " DELETE FROM  "+varNombreEsquema+"."+varNombreTabla+" \n"
+                    + " WHERE nombreusuario = ?;";
+            
+            PreparedStatement varPst = varClsConexion.getConexion().prepareStatement(sql);
+            varPst.setString(1, valueOf); 
+            varPst.executeUpdate();
+            varJsonObjectResultado.put("Result", "OK");
+            varPst.close();
+            varPst = null;
+            varClsConexion.closeConexion();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.print(e);
+        }
+        return varJsonObjectResultado;
     }
     
 }
