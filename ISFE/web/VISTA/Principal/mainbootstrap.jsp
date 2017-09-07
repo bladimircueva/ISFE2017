@@ -232,23 +232,7 @@
 
     <script language="Javascript">
         
-        $(document).ready(function ()
-        {
-            $('#listarol').html('');
-            $.post('/ISFE/srvRoles', {
-                parAccion: 'getListRol'}, 
-            function (rsp)
-            {
-                var JSONObject = JSON.parse(rsp);
-                $.each(JSONObject, function (index, item) {
-                    
-                console.log(rsp);
-                    $('#listarol').append("<option value=" + item.codigo + ">" + item.descripcion + "</option>");
-                });
-            });
-        });
-
-function GuardarUsuario()
+        function GuardarUsuario()
         {
             alert("melasa");
             
@@ -272,9 +256,27 @@ function GuardarUsuario()
                 dni: varUsuDni,
                 nombreusuario: varUsuNombreusuario,
                 password: varUsuPassword,
-                listarol: varUsuRol
+                rol_id: varUsuRol
             },function(rsp){alert(rsp);});
         }
+        
+        $(document).ready(function ()
+        {
+            $('#listarol').html('');
+            $.post('/ISFE/srvRoles', {
+                parAccion: 'getListRol'}, 
+            function (rsp)
+            {
+                var JSONObject = JSON.parse(rsp);
+                $.each(JSONObject, function (index, item) {
+                    
+                console.log(rsp);
+                    $('#listarol').append("<option value=" + item.id + ">" + item.descripcion + "</option>");
+                });
+            });
+        });
+
+
     </script>
 
 </html>

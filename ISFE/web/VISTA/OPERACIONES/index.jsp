@@ -31,55 +31,55 @@
                         deleteAction: '../../../srvObras?parAccion=delete'
                     },
                     fields: {
-                        obr_id: {
+                        id: {
                           key:true,
                           create: false,
                           edit: false,
                           list: false
                         },
-                        obr_CodObra: {
+                        codigo: {
                           title:'codigo',
                           create: true,
                           edit: true,
                           list:true
                         },
-                        obr_NombreObra: {
+                        nombre: {
                             title:'Obra',
                             create: true,
                             edit: true,
                             list: true
                         },  
-                        obr_NombreClienteObra: {
+                        nombrecliente: {
                             title:'Cliente',
                             create: true,
                             edit: true,
                             list: true
                         },
-                        obr_UbicacionObra: {
+                        ubicacion: {
                             title:'Ubicacion',
                             create: true,
                             edit: true,
                             list: true
                         },
-                        obr_inicioObra: {
+                        fechainicio: {
                             title:'Inicializacion',
                             create: true,
                             edit: true,
                             list: true
                         },
-                        obr_finObra: {
+                        fechafin: {
                             title:'Finalizacion',
                             create: true,
                             edit: true,
                             list: true
                         },
-                        obr_presupuesto: {
+                        presupuesto: {
                             title:'Presupuesto de Obra',
                             create: true,
                             edit: true,
                             list: true
                         },
-                        obr_NumPartidas: {
+                        numeropartidas: {
                             title:'Partidas',
                             create: true,
                             edit: true,

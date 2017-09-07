@@ -134,8 +134,8 @@ public class clsRoles {
         
          JSONObject varJsonObjectResultado = new JSONObject();
         try {
-            String sql = " DELETE FROM  "+varNombreTabla+" \n"
-                    + " WHERE id= (?) ;";
+            String sql = " DELETE FROM  "+varNombreEsquema+"."+varNombreTabla+" \n"
+                    + " WHERE codigo = ?;";
             
             PreparedStatement varPst = varClsConexion.getConexion().prepareStatement(sql);
             varPst.setString(1, RolId); 
@@ -183,6 +183,7 @@ public class clsRoles {
         try {
 
             String varSql = "SELECT \n"
+                    + "id,\n"
                     + "codigo,\n"
                     + "descripcion\n"
                     + "FROM "+varNombreTabla+"; \n";
@@ -191,6 +192,7 @@ public class clsRoles {
             ResultSet varResultado = varPst.executeQuery();
 
             while (varResultado.next()) {
+                JSONObject.put("id", varResultado.getString("id"));
                 JSONObject.put("codigo", varResultado.getString("codigo"));
                 JSONObject.put("descripcion", varResultado.getString("descripcion"));
                 JSONArray.add(JSONObject);

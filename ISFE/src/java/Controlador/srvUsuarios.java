@@ -5,7 +5,6 @@
  */
 package Controlador;
 
-import Modelo.clsRoles;
 import Modelo.clsUsuarios;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -94,7 +93,7 @@ public class srvUsuarios extends HttpServlet {
         String varUsuDni = varRequest.getParameter("dni");
         String varUsuNombreusuario = varRequest.getParameter("nombreusuario");
         String varUsuPassword = varRequest.getParameter("password");
-        String varUsuRol = varRequest.getParameter("listarol") ;
+        String varUsuRol = varRequest.getParameter("rol_id").toString();
         String UsuCodigo = varSession.getAttribute("session_usu_nombreusuario").toString();
         JSONObject varJObjectNuevoRegistro = varUsuarios.metNuevo(varUsuNombre,varUsuApellidos,varUsuEmail,varUsuDireccion,varUsuTelefono,varUsuDni,varUsuNombreusuario,varUsuPassword,varUsuRol,UsuCodigo);
         varOut.print(varJObjectNuevoRegistro);

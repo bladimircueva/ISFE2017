@@ -37,6 +37,7 @@
                           create: false,
                           edit: false,
                           list: false
+                          
                         },
                         codigo: {
                           title:'codigo',
