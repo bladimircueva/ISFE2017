@@ -56,7 +56,7 @@
                             create: true,
                             edit: true,
                             list: true,
-                            inputClass: 'validate[required]'
+                            inputClass: 'validate[required,maxSize[50]]'
                         },  
                         nombrecliente: {
                             title:'Cliente',
