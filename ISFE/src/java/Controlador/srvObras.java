@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 import net.sf.json.JSONObject;
 import org.codehaus.groovy.ast.ClassHelper;
 import java.sql.SQLException;
+import org.apache.commons.beanutils.Converter;
 /**
  *
  * @author Blad
@@ -65,8 +66,17 @@ public class srvObras extends HttpServlet {
             } else if (varRequest.getParameter("parAccion").equals("delete")) {
                 metEliminar();
             } else if (varRequest.getParameter("parAccion").equals("update")) {
-                
                 metModificar();
+            } else if (varRequest.getParameter("parAccion").equals("listchild")) {
+                System.out.print("varmaster:" + varRequest.getParameter("varmaster"));
+                metchildListar(varRequest.getParameter("varmaster"));
+            } else if (varRequest.getParameter("parAccion").equals("updatechild")) {
+                System.out.print("varmaster:" + varRequest.getParameter("varmaster"));
+                metchildEditar(varRequest.getParameter("varmaster"));
+            } else if (varRequest.getParameter("parAccion").equals("deletechild")) {
+                metchildEliminar();
+            } else if (varRequest.getParameter("parAccion").equals("createchild")) {
+                metchildCrear(varRequest.getParameter("varmaster"));
             }
             
             
@@ -77,15 +87,59 @@ public class srvObras extends HttpServlet {
     }
     
     private void metModificar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String varObrId = varRequest.getParameter("id");
+        String varObrCod = varRequest.getParameter("codigo");
+        String varObrNom = varRequest.getParameter("nombre");
+        String varObrNomCli = varRequest.getParameter("nombrecliente");
+        String varObrUbi = varRequest.getParameter("ubicacion");
+        String varObrFecIni = varRequest.getParameter("fechainicio");
+        String varObrFecFin = varRequest.getParameter("fechafin");
+        String varObrPre = varRequest.getParameter("presupuesto");
+        String varObrNumPar = varRequest.getParameter("numeropartidas");
+        String UsuCodigo = varSession.getAttribute("session_usu_nombreusuario").toString();
+        JSONObject varJObjectNuevoRegistro = varObras.metEditarObra(
+                varObrId,
+                varObrCod,
+                varObrNom,
+                varObrNomCli,
+                varObrUbi,
+                varObrFecIni,
+                varObrFecFin,
+                varObrPre,
+                varObrNumPar,
+                UsuCodigo);
+        varOut.print(varJObjectNuevoRegistro);
     }
 
     private void metEliminar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void metCrear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void metCrear() throws SQLException{
+        String varObrusuId = varRequest.getParameter("usuario_id");
+        String varObrUsuCre = varRequest.getParameter("usuariocreacion");
+        String varObrCod = varRequest.getParameter("codigo");
+        String varObrNom = varRequest.getParameter("nombre");
+        String varObrNomCli = varRequest.getParameter("nombrecliente");
+        String varObrUbi = varRequest.getParameter("ubicacion");
+        String varObrFecIni = varRequest.getParameter("fechainicio");
+        String varObrFecFin = varRequest.getParameter("fechafin");
+        String varObrPre = varRequest.getParameter("presupuesto");
+        String varObrNumPar = varRequest.getParameter("numeropartidas");
+        String UsuCodigo = varSession.getAttribute("session_usu_nombreusuario").toString();
+        JSONObject varJObjectNuevoRegistro = varObras.metNuevoObra(
+                varObrusuId,
+                varObrUsuCre,
+                varObrCod,
+                varObrNom,
+                varObrNomCli,
+                varObrUbi,
+                varObrFecIni,
+                varObrFecFin,
+                varObrPre,
+                varObrNumPar,
+                UsuCodigo);
+        varOut.print(varJObjectNuevoRegistro);
     }
 
     private void metLista() throws SQLException{
@@ -140,6 +194,23 @@ public class srvObras extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
+
+    private void metchildListar(String varmaster) {
+        JSONObject varJObjectLista = varObras.metListChild(varmaster);
+        varOut.print(varJObjectLista);
+    }
+
+    private void metchildEditar(String parameter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void metchildEliminar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private void metchildCrear(String parameter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
     
 

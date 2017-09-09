@@ -176,7 +176,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="acolapsar">
                     <ul class="nav navbar-nav">
-                        <li><a href="#"><span class="glyphicon glyphicon-home"></span>Inicio</a></li>
+                        <li><a href="mainbootstrap.jsp"><span class="glyphicon glyphicon-home"></span>Inicio</a></li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Operaciones<b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -223,8 +223,19 @@
             </div>
         </nav>
 
-        <iframe  id="container"  width="100%" height="100%"   frameBorder="0" name="container"></iframe>    
-        <div style="align-content:center">  <a href="#"><img src="../../css/images/logoisfe.png"></a></div>
+       
+        
+        
+            
+            
+            
+            <iframe  id="container"   width="100%" height="100%"   frameBorder="0" name="container" style="background-image: url(../../css/images/logoisfe.png);background-repeat: no-repeat;background-size: 100%">
+                 <img src="../../css/images/logoisfe.png"/>
+            </iframe>   
+        
+        
+        
+
 
 
 
@@ -234,8 +245,6 @@
         
         function GuardarUsuario()
         {
-            alert("melasa");
-            
             var varUsuNombre = $('#nombres').val();
             var varUsuApellidos = $('#apellidos').val();
             var varUsuEmail = $('#email').val();

@@ -24,11 +24,12 @@
             {
                 $('#ObrasTablaContenidos').jtable({
                     title: 'Obras',
+                    useBootstrap: true,
                     actions:{
                         listAction: '../../srvObras?parAccion=list',
-                        createAction: '../../../srvObras?parAccion=create',
-                        updateAction: '../../../srvObras?parAccion=update',
-                        deleteAction: '../../../srvObras?parAccion=delete'
+                        createAction: '../../srvObras?parAccion=create',
+                        updateAction: '../../srvObras?parAccion=update',
+                        deleteAction: '../../srvObras?parAccion=delete'
                     },
                     fields: {
                         id: {
@@ -37,17 +38,25 @@
                           edit: false,
                           list: false
                         },
+                        usuariocreacion: {
+                          title:'Creado por',
+                          create: false,
+                          edit: false,
+                          list:true
+                        },
                         codigo: {
                           title:'codigo',
                           create: true,
                           edit: true,
-                          list:true
+                          list:true,
+                          inputClass:'validate[required,maxSize[4]]' 
                         },
                         nombre: {
                             title:'Obra',
                             create: true,
                             edit: true,
-                            list: true
+                            list: true,
+                            inputClass: 'validate[required]'
                         },  
                         nombrecliente: {
                             title:'Cliente',
@@ -65,19 +74,22 @@
                             title:'Inicializacion',
                             create: true,
                             edit: true,
-                            list: true
+                            list: true,
+                            type: 'date'
                         },
                         fechafin: {
                             title:'Finalizacion',
                             create: true,
                             edit: true,
-                            list: true
+                            list: true,
+                            type: 'date'
                         },
                         presupuesto: {
                             title:'Presupuesto de Obra',
                             create: true,
                             edit: true,
-                            list: true
+                            list: true,
+                            type: 'number'
                         },
                         numeropartidas: {
                             title:'Partidas',
@@ -92,7 +104,8 @@
                             edit: false,
                             create: false,
                             display: function(listauxe) {
-                                var $img = $('<img src="<%= request.getContextPath()%>/imagenes/list.png" />');
+                                alert(listauxe.record.id)
+                                var $img = $('<img src="<%= request.getContextPath()%>/css/images/list.png" />');
                                 $img.click(function() {
                                     $('#ObrasTablaContenidos').jtable('openChildTable',
                                             $img.closest('tr'), //Parent row
@@ -100,35 +113,35 @@
                                                 title: 'Partidas',
                                                 editinline: {enable: true},
                                                 actions: {
-                                                    listAction: '../../srvObras?parAccion=listchild&varmaster=' + listauxe.record.obr_id,
+                                                    listAction: '../../srvObras?parAccion=listchild&varmaster=' + listauxe.record.id,
                                                     updateAction: '../../srvObras?parAccion=updatechild',
                                                     deleteAction: '../../srvObras?parAccion=deletechild',
-                                                    createAction: '../../srvObras?parAccion=createchild&varmaster=' + listauxe.record.ent_id
+                                                    createAction: '../../srvObras?parAccion=createchild&varmaster=' + listauxe.record.id
                                                 },
                                                 fields: {
-                                                    par_id: {
+                                                    id: {
                                                         key: true,
                                                         create: false,
                                                         edit: false,
                                                         list: false
                                                     },
-                                                    par_CodigoPartida: {
-                                                        title: 'Direccion',
+                                                    codigo: {
+                                                        title: 'codigo',
                                                         create: true,
                                                         edit: true,
                                                         width: '1%',
                                                         list: true,
-                                                        inputClass: 'validate[required,maxSize[50],minSize[10]]'
+                                                        inputClass: 'validate[required,maxSize[4]]'
                                                     },
-                                                    par_FechaInicio: {
-                                                        title: 'Telefono',
+                                                    fechainicio: {
+                                                        title: 'Fecha Inicio',
                                                         create: true,
                                                         edit: true,
                                                         width: '1%',
                                                         list: true
                                                     },
-                                                    par_FechaFin: {
-                                                        title: 'Celular',
+                                                    fechafin: {
+                                                        title: 'Fecha Fin',
                                                         create: true,
                                                         edit: true,
                                                         width: '1%',
@@ -136,27 +149,6 @@
                                                     },
                                                     par_usucreacion: {
                                                         title: 'UsuCreacion',
-                                                        width: '10%',
-                                                        list: false,
-                                                        create: false,
-                                                        edit: false
-                                                    },
-                                                    par_feccreacion: {
-                                                        title: 'FecCreacion',
-                                                        width: '10%',
-                                                        list: false,
-                                                        create: false,
-                                                        edit: false
-                                                    },
-                                                    par_usumodificacion: {
-                                                        title: 'UsuModificacion',
-                                                        width: '10%',
-                                                        list: false,
-                                                        create: false,
-                                                        edit: false
-                                                    },
-                                                    par_fecmodificacion: {
-                                                        title: 'FecModificacion',
                                                         width: '10%',
                                                         list: false,
                                                         create: false,
@@ -194,6 +186,8 @@
                     formCreated: function(event, data) {
                         $('.jtable-input > div').css('width','100%');
                         $('.jtable-input > div input').css('width','90%');
+                        console.log(data);
+                        console.log(event);
                     }
                 });
                 $('#ObrasTablaContenidos').jtable('load');
