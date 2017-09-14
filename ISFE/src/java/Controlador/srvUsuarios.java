@@ -77,12 +77,25 @@ public class srvUsuarios extends HttpServlet {
 
 
     private void metQuitar()throws SQLException{
-        JSONObject varJObjectLista = varUsuarios.metQuitar(varRequest.getParameter("codigo"));
+        String varIdUusuario = varRequest.getParameter("id");
+        JSONObject varJObjectLista = varUsuarios.metEliminar(varIdUusuario);
         varOut.print(varJObjectLista); 
     }
 
-    private void metModificar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void metModificar()throws SQLException{
+        String UsuarioId = varRequest.getParameter("id");
+        String varUsuNombres = varRequest.getParameter("nombres");
+        String varUsuApellidos = varRequest.getParameter("apellidos");
+        String varUsuEmail = varRequest.getParameter("email");
+        String varUsuDireccion = varRequest.getParameter("direccion");
+        String varUsuTelefono = varRequest.getParameter("telefono");
+        String varUsuDni = varRequest.getParameter("dni");
+        String varUsuNombreusuario = varRequest.getParameter("nombreusuario");
+        String varUsuPassword = varRequest.getParameter("password");
+        String varUsuRol = varRequest.getParameter("rol_id");
+        String varUsuModificacion = varSession.getAttribute("session_usu_nombreusuario").toString();
+        JSONObject varJObjectNuevoRegistro = varUsuarios.metEditar(UsuarioId,varUsuNombres,varUsuApellidos,varUsuEmail,varUsuDireccion,varUsuTelefono,varUsuDni,varUsuNombreusuario,varUsuPassword,varUsuRol,varUsuModificacion);
+        varOut.print(varJObjectNuevoRegistro);
     }
 
     private void metCrear() throws SQLException{

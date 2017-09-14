@@ -36,7 +36,7 @@
                           key:true,
                           create: false,
                           edit: false,
-                          list: false
+                          list: true
                         },
                         usuariocreacion: {
                           title:'Creado por',
@@ -123,13 +123,12 @@
                                                         key: true,
                                                         create: false,
                                                         edit: false,
-                                                        list: false
+                                                        list: true
                                                     },
                                                     codigo: {
                                                         title: 'codigo',
                                                         create: true,
                                                         edit: true,
-                                                        width: '1%',
                                                         list: true,
                                                         inputClass: 'validate[required,maxSize[4]]'
                                                     },
@@ -137,20 +136,19 @@
                                                         title: 'Fecha Inicio',
                                                         create: true,
                                                         edit: true,
-                                                        width: '1%',
-                                                        list: true
+                                                        list: true,
+                                                        type: 'date'
                                                     },
                                                     fechafin: {
                                                         title: 'Fecha Fin',
                                                         create: true,
                                                         edit: true,
-                                                        width: '1%',
-                                                        list: true
+                                                        list: true,
+                                                        type: 'date'
                                                     },
                                                     par_usucreacion: {
                                                         title: 'UsuCreacion',
-                                                        width: '10%',
-                                                        list: false,
+                                                        list: true,
                                                         create: false,
                                                         edit: false
                                                     }

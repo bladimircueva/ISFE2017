@@ -69,14 +69,14 @@ public class srvObras extends HttpServlet {
                 metModificar();
             } else if (varRequest.getParameter("parAccion").equals("listchild")) {
                 System.out.print("varmaster:" + varRequest.getParameter("varmaster"));
-                metchildListar(varRequest.getParameter("varmaster"));
+                metPartidadListar(varRequest.getParameter("varmaster"));
             } else if (varRequest.getParameter("parAccion").equals("updatechild")) {
                 System.out.print("varmaster:" + varRequest.getParameter("varmaster"));
                 metchildEditar(varRequest.getParameter("varmaster"));
             } else if (varRequest.getParameter("parAccion").equals("deletechild")) {
                 metchildEliminar();
             } else if (varRequest.getParameter("parAccion").equals("createchild")) {
-                metchildCrear(varRequest.getParameter("varmaster"));
+                metPartidaCrear(varRequest.getParameter("varmaster"));
             }
             
             
@@ -195,7 +195,7 @@ public class srvObras extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void metchildListar(String varmaster) {
+    private void metPartidadListar(String varmaster) {
         JSONObject varJObjectLista = varObras.metListChild(varmaster);
         varOut.print(varJObjectLista);
     }
@@ -208,8 +208,19 @@ public class srvObras extends HttpServlet {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    private void metchildCrear(String parameter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void metPartidaCrear(String parameter) {
+        String varParObrId = parameter;
+        String varParCod = varRequest.getParameter("codigo");
+        String varParFecIni = varRequest.getParameter("fechainicio");
+        String varParFecFin = varRequest.getParameter("fechafin");
+        String UsuCodigo = varSession.getAttribute("session_usu_nombreusuario").toString();
+        JSONObject varJObjectNuevoRegistro = varObras.metNuevaPartida(
+                varParObrId,
+                varParCod,
+                varParFecIni,
+                varParFecFin,
+                UsuCodigo);
+        varOut.print(varJObjectNuevoRegistro);
     }
 
     

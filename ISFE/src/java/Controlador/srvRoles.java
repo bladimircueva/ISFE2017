@@ -87,7 +87,7 @@ public class srvRoles extends HttpServlet {
     }
 
     private void metEliminar() throws SQLException {
-        JSONObject varJObjectLista = varRoles.metQuitar(varRequest.getParameter("codigo"));
+        JSONObject varJObjectLista = varRoles.metQuitar(varRequest.getParameter("id"));
         varOut.print(varJObjectLista); 
     }
 

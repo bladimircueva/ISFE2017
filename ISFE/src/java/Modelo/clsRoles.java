@@ -46,6 +46,7 @@ public class clsRoles {
             ResultSet varResultado = varPst.executeQuery();
             System.out.println("RESULTADO DE LA COSNULTA" + varSql);
             while (varResultado.next()) {
+                varJsonObjectP.put("id", varResultado.getString("id"));
                 varJsonObjectP.put("codigo", varResultado.getString("codigo"));
                 varJsonObjectP.put("descripcion", varResultado.getString("descripcion"));
 
@@ -134,11 +135,12 @@ public class clsRoles {
         
          JSONObject varJsonObjectResultado = new JSONObject();
         try {
+            System.out.println("id" + RolId);
             String sql = " DELETE FROM  "+varNombreEsquema+"."+varNombreTabla+" \n"
-                    + " WHERE codigo = ?;";
+                    + " WHERE id = ?;";
             
             PreparedStatement varPst = varClsConexion.getConexion().prepareStatement(sql);
-            varPst.setString(1, RolId); 
+            varPst.setInt(1,Integer.parseInt(RolId)); 
             varPst.executeUpdate();
             varJsonObjectResultado.put("Result", "OK");
             varPst.close();

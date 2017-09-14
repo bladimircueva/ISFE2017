@@ -85,42 +85,22 @@
                           create: true,
                           edit: true,
                           list:true
+                        },
+                        rol_id:{
+                            title: 'Rol',
+                            create: true,
+                            edit: true,
+                            list: true
                         }
                         
                     },
                     formCreated: function(event, data) {
-                        $('.jtable-input > div').css('width','100%');
-                        $('.jtable-input > div input').css('width','90%');
                     }
                 });
                 $('#UsuariosTablaContenidos').jtable('load');
             });
-            
-            
         </script>
     <style>
-
-        #jtable-create-form, #jtable-edit-form {
-            height: 495px;
-        }
-        .ui-dialog .ui-widget-header,.ui-widget-header
-        {
-            background: #0D0D0D;
-            border: 1px solid;
-        }
-        body
-        {
-            padding: 0px;
-            margin:0px;
-        }
-        .container
-        {
-            padding: 0px;
-            margin:0px;
-            margin-top:20px;
-            width:auto;
-        }
-
     </style>
     
     </head>

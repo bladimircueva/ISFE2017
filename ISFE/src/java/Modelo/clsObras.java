@@ -41,6 +41,7 @@ public class clsObras {
         
         try {
             String varSql = "SELECT \n"
+                    + "  OBR.id,\n"
                     + "  OBR.usuario_id,\n"
                     + "  OBR.usuariocreacion,\n"
                     + "  OBR.codigo,\n"
@@ -61,6 +62,7 @@ public class clsObras {
             ResultSet varResultado = varPst.executeQuery();
             SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
             while (varResultado.next()) {
+                varJsonObjectP.put("id", varResultado.getString("id"));
                 varJsonObjectP.put("usuario_id", varResultado.getString("usuario_id"));
                 varJsonObjectP.put("usuariocreacion", varResultado.getString("usuariocreacion"));
                 varJsonObjectP.put("codigo", varResultado.getString("codigo"));
@@ -120,6 +122,7 @@ public class clsObras {
                     UsuCodigo);
             
             String varSql = "SELECT \n"
+                    + " OBR.id,\n"
                      + " OBR.usuario_id,\n"
                     + "  OBR.usuariocreacion,\n"
                     + "  OBR.codigo,\n"
@@ -140,6 +143,7 @@ public class clsObras {
             ResultSet varResultado = varPst.executeQuery();
             SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
             while (varResultado.next()) {
+                varJsonObjectRegistro.put("id", varResultado.getString("id"));
                 varJsonObjectRegistro.put("usuario_id", varResultado.getString("usuario_id"));
                 varJsonObjectRegistro.put("usuariocreacion", varResultado.getString("usuariocreacion"));
                 varJsonObjectRegistro.put("codigo", varResultado.getString("codigo"));
@@ -279,6 +283,7 @@ public class clsObras {
         JSONObject varJsonObjectResultado = new JSONObject();
         try {
             String varSql = "SELECT "
+                    + "PAR.id,"
                     + "PAR.codigo,"
                     + "PAR.fechainicio,"
                     + "PAR.fechafin "
@@ -291,6 +296,7 @@ public class clsObras {
             ResultSet varResultado = varPst.executeQuery();
 
             while (varResultado.next()) {
+                varJsonObjectP.put("id", varResultado.getString("id"));
                 varJsonObjectP.put("codigo", varResultado.getString("codigo"));
                 varJsonObjectP.put("fechainicio", varResultado.getString("fechainicio"));
                 varJsonObjectP.put("fechafin", varResultado.getString("fechafin"));
@@ -310,6 +316,98 @@ public class clsObras {
         varJsonObjectResultado.put("Result", "OK");
         varJsonObjectResultado.put("Records", varJsonArrayP);
         return varJsonObjectResultado;
+    }
+
+    public JSONObject metNuevaPartida(String varParObrId, String varParCod, String varParFecIni, String varParFecFin, String UsuCodigo) {
+         JSONObject varJsonObjectResultado = new JSONObject();
+        JSONObject varJsonObjectRegistro = new JSONObject();
+        try {
+            metGuardarEnBd2(
+                    varParObrId,
+                    varParCod,
+                    varParFecIni,
+                    varParFecFin,
+                    UsuCodigo);
+            
+            String varSql = "SELECT \n"
+                    + " PAR.id,\n"
+                    + " PAR.codigo,\n"
+                    + "  PAR.fechainicio,\n"
+                    + "  PAR.fechafin,\n"
+                    + "  PAR.obra_id,\n"
+                    + "  PAR.fechacreacion\n"
+                    + "FROM \n"
+                    + " "+varNombreEsquema+"."+varNombreTablaChild+" PAR\n"
+                    + "ORDER BY PAR.fechacreacion;";
+            
+            PreparedStatement varPst = varClsConexion.getConexion().prepareStatement(varSql);
+            
+            ResultSet varResultado = varPst.executeQuery();
+            SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+            while (varResultado.next()) {
+                varJsonObjectRegistro.put("id", varResultado.getString("id"));
+                varJsonObjectRegistro.put("codigo", varResultado.getString("codigo"));
+                if (varResultado.getString("fechainicio") != null) {
+                    java.util.Date EntFechaNacimientoR = formatoDelTexto.parse(varResultado.getString("fechainicio"));
+                    varJsonObjectRegistro.put("fechainicio", formatoDelTexto.format(EntFechaNacimientoR));
+                } else {
+                    varJsonObjectRegistro.put("fechainicio", "");
+                }
+                if (varResultado.getString("fechafin") != null) {
+                    java.util.Date EntFechaNacimientoR = formatoDelTexto.parse(varResultado.getString("fechafin"));
+                    varJsonObjectRegistro.put("fechafin", formatoDelTexto.format(EntFechaNacimientoR));
+                } else {
+                    varJsonObjectRegistro.put("fechafin", "");
+                }
+                varJsonObjectRegistro.put("obra_id", varResultado.getString("obra_id"));
+                varJsonObjectRegistro.put("fechacreacion", varResultado.getString("fechacreacion"));
+            }
+            varJsonObjectResultado.put("Result", "OK");
+            
+            varJsonObjectResultado.put("Record", varJsonObjectRegistro);
+            varResultado.close();
+            varResultado = null;
+            varClsConexion.closeConexion();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.print(e);
+        }
+        
+        return varJsonObjectResultado;
+    }
+
+    private void metGuardarEnBd2(String varParObrId, String varParCod, String varParFecIni, String varParFecFin, String UsuCodigo) {
+        try {
+            java.util.Date fecha = new java.util.Date();
+             SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+             String fechaactual = formateador.format(fecha);
+            String sql = "INSERT INTO \n"
+                    + "  "+varNombreEsquema+"."+varNombreTablaChild+" \n"
+                    + "(\n"
+                    + "  codigo,\n"
+                    + "  fechainicio,\n"
+                    + "  fechafin,\n"
+                    + "  usuariocreacion,\n"
+                    + "  fechacreacion,\n"
+                    + "  obra_id\n"
+                    + ") \n"
+                    + "VALUES (\n"
+                    + "  '" + varParCod + "',\n"
+                    + "  '" + varParFecIni + "',\n"
+                    + "  '" + varParFecFin + "',\n"
+                    + "  '" + UsuCodigo + "',\n"
+                    + "  '" + fechaactual + "',\n"
+                    + "  '" + varParObrId + "'\n"
+                    + ");";
+            PreparedStatement varPst = varClsConexion.getConexion().prepareStatement(sql);
+            varPst.executeUpdate();
+            varPst.close();
+            varPst = null;
+            varClsConexion.closeConexion();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.print(e);
+        }
     }
         
     

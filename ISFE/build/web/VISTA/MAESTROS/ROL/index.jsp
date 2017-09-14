@@ -36,8 +36,7 @@
                           key:true,
                           create: false,
                           edit: false,
-                          list: false
-                          
+                          list: true
                         },
                         codigo: {
                           title:'codigo',
