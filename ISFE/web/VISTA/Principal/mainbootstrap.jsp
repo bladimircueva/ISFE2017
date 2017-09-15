@@ -32,14 +32,11 @@
 
         <style type="text/css">
 
-            html { background:#333333; }
             body {
-                margin:auto;
+                margin: inherit;
                 width:100%;
-                height:600px;
+                height:550px;
                 background:#fff;
-                overflow:hidden;
-                background: #707070;
             }
 
             div#menu {

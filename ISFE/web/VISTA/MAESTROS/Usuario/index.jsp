@@ -101,6 +101,31 @@
             });
         </script>
     <style>
+        .ui-dialog .ui-widget-header,.ui-widget-header
+        {
+            background: #006dcc;
+            border: 1px solid;
+        }
+        body
+        {
+            padding: 0px;
+            margin:0px;
+        }
+        .container
+        {
+            padding: 0px;
+            margin:0px;
+            margin-top:20px;
+            width:auto;
+        }
+        
+
+#jtable-create-form, #jtable-edit-form {
+                
+                -moz-column-count:2;
+                -webkit-column-count:2;
+                column-count:2;
+            }
     </style>
     
     </head>

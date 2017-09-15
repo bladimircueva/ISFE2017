@@ -63,12 +63,9 @@
         </script>
     <style>
 
-        #jtable-create-form, #jtable-edit-form {
-            height: 495px;
-        }
-        .ui-dialog .ui-widget-header,.ui-widget-header
+       .ui-dialog .ui-widget-header,.ui-widget-header
         {
-            background: #0D0D0D;
+            background: #006dcc;
             border: 1px solid;
         }
         body
@@ -83,7 +80,14 @@
             margin-top:20px;
             width:auto;
         }
+        
 
+#jtable-create-form, #jtable-edit-form {
+                
+                -moz-column-count:2;
+                -webkit-column-count:2;
+                column-count:2;
+            }
     </style>
     
     </head>

@@ -286,7 +286,8 @@ public class clsObras {
                     + "PAR.id,"
                     + "PAR.codigo,"
                     + "PAR.fechainicio,"
-                    + "PAR.fechafin "
+                    + "PAR.fechafin,"
+                    + "PAR.usuariocreacion "
                     + "FROM "+varNombreTabla+" OBR inner join "
                     + " "+varNombreTablaChild+" PAR "
                     + "on OBR.id=PAR.obra_id\n"
@@ -300,6 +301,7 @@ public class clsObras {
                 varJsonObjectP.put("codigo", varResultado.getString("codigo"));
                 varJsonObjectP.put("fechainicio", varResultado.getString("fechainicio"));
                 varJsonObjectP.put("fechafin", varResultado.getString("fechafin"));
+                varJsonObjectP.put("usuariocreacion", varResultado.getString("usuariocreacion"));
 
                 varJsonArrayP.add(varJsonObjectP);
             }
@@ -408,6 +410,63 @@ public class clsObras {
             e.printStackTrace();
             System.out.print(e);
         }
+    }
+
+    public JSONObject metEditarchild(String varParId, String varParObrId, String varParCod, String varParFecIni, String varParFecFin, String varParUsuModificacion) {
+        JSONObject varJsonObjectResultado = new JSONObject();
+        try {
+             java.util.Date fecha = new java.util.Date();
+             SimpleDateFormat formateador = new SimpleDateFormat("dd-MM-yyyy");
+             String fechaactual = formateador.format(fecha);
+            String sql = " UPDATE \n"
+                    + ""+varNombreEsquema+"."+varNombreTablaChild+" \n"
+                    + " SET \n"
+                    + " codigo= (?), \n"
+                    + " fechainicio= (?), \n"
+                    + " fechafin= (?), \n"
+                    + " iusuariomodificacion= (?), \n"
+                    + " fechamodificacion= (?) \n"
+                    + " WHERE id= (?) ;";
+            PreparedStatement varPst = varClsConexion.getConexion().prepareStatement(sql);
+            varPst.setString(1, varParCod);
+            varPst.setString(2, varParFecIni); 
+            varPst.setString(3, varParFecFin);
+            varPst.setString(4, varParUsuModificacion);
+            varPst.setString(5, fechaactual);
+            varPst.setString(6, varParId);
+            
+            System.out.println("sql" + varPst.toString());
+            varPst.executeUpdate();
+            varJsonObjectResultado.put("Result", "OK");
+            varPst.close();
+            varPst = null;
+            varClsConexion.closeConexion();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println(e);
+        }
+        return varJsonObjectResultado;
+    }
+
+    public JSONObject metDeleteChild(String parameter) {
+        JSONObject varJsonObjectResultado = new JSONObject();
+        try {
+
+            String sql = "DELETE FROM  " + varNombreEsquema + "." + varNombreTablaChild + " "
+                    + "WHERE id = ?;";
+
+            PreparedStatement varPst = varClsConexion.getConexion().prepareStatement(sql);
+            varPst.setInt(1, Integer.valueOf(parameter)); //@ID            
+            varPst.executeUpdate();
+            varJsonObjectResultado.put("Result", "OK");
+            varPst.close();
+
+            varClsConexion.closeConexion();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.print(e);
+        }
+        return varJsonObjectResultado;
     }
         
     

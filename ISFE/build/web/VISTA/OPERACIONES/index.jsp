@@ -104,7 +104,6 @@
                             edit: false,
                             create: false,
                             display: function(listauxe) {
-                                alert(listauxe.record.id)
                                 var $img = $('<img src="<%= request.getContextPath()%>/css/images/list.png" />');
                                 $img.click(function() {
                                     $('#ObrasTablaContenidos').jtable('openChildTable',
@@ -146,31 +145,14 @@
                                                         list: true,
                                                         type: 'date'
                                                     },
-                                                    par_usucreacion: {
-                                                        title: 'UsuCreacion',
+                                                    usuariocreacion: {
+                                                        title: 'Creado por ',
                                                         list: true,
                                                         create: false,
                                                         edit: false
                                                     }
                                                 },
                                                 formCreated: function(event, data) {
-                                                    data.form.find('input[name="edi_direccion"]').prop('maxlength', '100');
-                                                    data.form.find('input[name="edi_direccion"]').css('width', '100%');
-                                          
-                                                    if (data.formType === 'edit') {
-                                                        $('.jtable-edit-form div:nth-child(17)').hide();
-                                                        $('.jtable-edit-form div:nth-child(18)').hide();
-                                                        $('.jtable-edit-form div:nth-child(19)').hide();
-                                                        ubi_departamento = $('#Edit-ubi_departamento').val();
-                                                        ubi_provincia = $('#Edit-ubi_provincia').val();
-                                                        ubi_distrito = $('#Edit-ubi_distrito').val();
-                                                    }
-                                                    else {
-                                                        $('.jtable-create-form div:nth-child(15)').hide();
-                                                        $('.jtable-create-form div:nth-child(16)').hide();
-                                                        $('.jtable-create-form div:nth-child(17)').hide();
-                                                    }
-
                                                 }
                                             }, function(data) {
                                         data.childTable.jtable('load');
@@ -182,10 +164,7 @@
                         },
                     },
                     formCreated: function(event, data) {
-                        $('.jtable-input > div').css('width','100%');
-                        $('.jtable-input > div input').css('width','90%');
-                        console.log(data);
-                        console.log(event);
+                        
                     }
                 });
                 $('#ObrasTablaContenidos').jtable('load');
@@ -196,12 +175,9 @@
         
     <style>
 
-        #jtable-create-form, #jtable-edit-form {
-            height: 495px;
-        }
         .ui-dialog .ui-widget-header,.ui-widget-header
         {
-            background: #0D0D0D;
+            background: #006dcc;
             border: 1px solid;
         }
         body
@@ -216,7 +192,14 @@
             margin-top:20px;
             width:auto;
         }
+        
 
+#jtable-create-form, #jtable-edit-form {
+                
+                -moz-column-count:2;
+                -webkit-column-count:2;
+                column-count:2;
+            }
     </style>
     
     </head>

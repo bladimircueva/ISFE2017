@@ -195,17 +195,32 @@ public class srvObras extends HttpServlet {
         return "Short description";
     }// </editor-fold>
 
-    private void metPartidadListar(String varmaster) {
+    private void metPartidadListar(String varmaster) throws SQLException{
         JSONObject varJObjectLista = varObras.metListChild(varmaster);
         varOut.print(varJObjectLista);
     }
 
-    private void metchildEditar(String parameter) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    private void metchildEditar(String parameter) throws SQLException{
+        String varParId = varRequest.getParameter("id");
+        String varParObrId = parameter;
+        String varParCod = varRequest.getParameter("codigo");
+        String varParFecIni = varRequest.getParameter("fechainicio");
+        String varParFecFin = varRequest.getParameter("fechafin");
+        String varParUsuModificacion = varSession.getAttribute("session_usu_nombreusuario").toString();
+        JSONObject varJObjectNuevoRegistro = varObras.metEditarchild(
+                varParId,
+                varParObrId,
+                varParCod,
+                varParFecIni,
+                varParFecFin,
+                varParUsuModificacion
+        );
+        varOut.print(varJObjectNuevoRegistro);
     }
 
     private void metchildEliminar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        JSONObject varJObjectLista = varObras.metDeleteChild(varRequest.getParameter("id"));
+        varOut.print(varJObjectLista);
     }
 
     private void metPartidaCrear(String parameter) {
