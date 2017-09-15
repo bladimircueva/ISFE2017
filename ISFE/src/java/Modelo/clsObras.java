@@ -468,6 +468,36 @@ public class clsObras {
         }
         return varJsonObjectResultado;
     }
+
+    public JSONArray metListObras() {
+        JSONObject JSONObject = new JSONObject();
+        JSONArray JSONArray = new JSONArray();
+        try {
+
+            String varSql = "SELECT \n"
+                    + "id,\n"
+                    + "codigo,\n"
+                    + "nombre\n"
+                    + "FROM "+varNombreTabla+"; \n";
+            PreparedStatement varPst = varClsConexion.getConexion().prepareStatement(varSql);
+
+            ResultSet varResultado = varPst.executeQuery();
+
+            while (varResultado.next()) {
+                JSONObject.put("id", varResultado.getString("id"));
+                JSONObject.put("codigo", varResultado.getString("codigo"));
+                JSONObject.put("nombre", varResultado.getString("nombre"));
+                JSONArray.add(JSONObject);
+            }
+            varResultado.close();
+            varResultado = null;
+            varClsConexion.closeConexion();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.print(e);
+        }
+        return JSONArray;
+    }
         
     
     

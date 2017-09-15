@@ -103,7 +103,6 @@ public class srvRoles extends HttpServlet {
     
     private void metGetListRol() throws SQLException{
             //varOut.println(varEmpresas.metEmpresasSelect());
-            System.out.println("MELASA");
             JSONArray JSONArray = varRoles.metListRoles();
             varOut.print(JSONArray);
     }

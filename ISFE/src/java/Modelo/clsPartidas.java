@@ -7,8 +7,8 @@ package Modelo;
 
 /**
  *
- * @author Bladimir
+ * @author Blad
  */
-public class clsRequerimientos {
+public class clsPartidas {
     
 }

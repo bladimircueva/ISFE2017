@@ -14,9 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Bladimir
+ * @author Blad
  */
-public class srvRequerimientos extends HttpServlet {
+public class srvPartidas extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +35,10 @@ public class srvRequerimientos extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet srvRequerimientos</title>");            
+            out.println("<title>Servlet srvPartidas</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet srvRequerimientos at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet srvPartidas at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

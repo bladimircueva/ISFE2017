@@ -33,8 +33,8 @@
         <servlet-class>Controlador.srvUsuarios</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>srvRequerimientos</servlet-name>
-        <servlet-class>Controlador.srvRequerimientos</servlet-class>
+        <servlet-name>srvPartidas</servlet-name>
+        <servlet-class>Controlador.srvPartidas</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ser_IniciarSesion</servlet-name>
@@ -69,8 +69,8 @@
         <url-pattern>/srvUsuarios</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>srvRequerimientos</servlet-name>
-        <url-pattern>/srvRequerimientos</url-pattern>
+        <servlet-name>srvPartidas</servlet-name>
+        <url-pattern>/srvPartidas</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

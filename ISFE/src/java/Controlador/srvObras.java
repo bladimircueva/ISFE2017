@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 import net.sf.json.JSONObject;
 import org.codehaus.groovy.ast.ClassHelper;
 import java.sql.SQLException;
+import net.sf.json.JSONArray;
 import org.apache.commons.beanutils.Converter;
 /**
  *
@@ -77,6 +78,8 @@ public class srvObras extends HttpServlet {
                 metchildEliminar();
             } else if (varRequest.getParameter("parAccion").equals("createchild")) {
                 metPartidaCrear(varRequest.getParameter("varmaster"));
+            } else if (varRequest.getParameter("parAccion").equals("getListObra")) {
+                metGetListObra();
             }
             
             
@@ -236,6 +239,11 @@ public class srvObras extends HttpServlet {
                 varParFecFin,
                 UsuCodigo);
         varOut.print(varJObjectNuevoRegistro);
+    }
+
+    private void metGetListObra() throws SQLException{
+        JSONArray JSONArray = varObras.metListObras();
+            varOut.print(JSONArray);
     }
 
     
