@@ -35,7 +35,7 @@
             body {
                 margin: inherit;
                 width:100%;
-                height:550px;
+                height:700px;
                 background:#fff;
             }
 
@@ -178,7 +178,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Operaciones<b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="../OPERACIONES/index.jsp" target="container"><span>Obras</span></a></li>
-                                <li><a href="../OPERACIONES/index.jsp" target="container"><span>Requerimientos</span></a></li>
+                                <li><a href="../REQUERIMIENTOS/index.jsp" target="container"><span>Requerimientos</span></a></li>
                                 <li><a href="../OPERACIONES/index.jsp" target="container"><span>Recepcion</span></a></li>
 
                             </ul>

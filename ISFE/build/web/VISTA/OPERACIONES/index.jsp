@@ -36,7 +36,8 @@
                           key:true,
                           create: false,
                           edit: false,
-                          list: true
+                          list: true,
+                          width: '1%'
                         },
                         usuariocreacion: {
                           title:'Creado por',
@@ -45,24 +46,44 @@
                           list:true
                         },
                         codigo: {
-                          title:'codigo',
+                          title:'Cod Obra',
                           create: true,
                           edit: true,
                           list:true,
-                          inputClass:'validate[required,maxSize[4]]' 
+                          inputClass:'validate[required,maxSize[4]]',
+                          width: '4%'
                         },
+                        nombrecliente: {
+                            title:'Cliente Obra',
+                            create: true,
+                            edit: true,
+                            list: true
+                        },
+                        
+                        
+                        fechainicio: {
+                            title:'Inicio de Obra',
+                            create: true,
+                            edit: true,
+                            list: true,
+                            type: 'date'
+                        },
+                        
+                        
+                         numeropartidas: {
+                            title:'Partidas',
+                            create: true,
+                            edit: true,
+                            list: true,
+                            width: '1%'
+                        },
+                        
                         nombre: {
-                            title:'Obra',
+                            title:'Nombre Obra',
                             create: true,
                             edit: true,
                             list: true,
                             inputClass: 'validate[required,maxSize[50]]'
-                        },  
-                        nombrecliente: {
-                            title:'Cliente',
-                            create: true,
-                            edit: true,
-                            list: true
                         },
                         ubicacion: {
                             title:'Ubicacion',
@@ -70,36 +91,25 @@
                             edit: true,
                             list: true
                         },
-                        fechainicio: {
-                            title:'Inicializacion',
+                          fechafin: {
+                            title:'Fin de Obra',
                             create: true,
                             edit: true,
                             list: true,
                             type: 'date'
                         },
-                        fechafin: {
-                            title:'Finalizacion',
-                            create: true,
-                            edit: true,
-                            list: true,
-                            type: 'date'
-                        },
+                        
                         presupuesto: {
-                            title:'Presupuesto de Obra',
+                            title:'Presupuesto',
                             create: true,
                             edit: true,
                             list: true,
                             type: 'number'
                         },
-                        numeropartidas: {
-                            title:'Partidas',
-                            create: true,
-                            edit: true,
-                            list: true
-                        },
+                       
                         Partidas: {
-                            title: 'Partidas',
-                            width: '2%',
+                            title: 'Ver Partidas',
+                            width: '6%',
                             sorting: false,
                             edit: false,
                             create: false,
@@ -109,7 +119,7 @@
                                     $('#ObrasTablaContenidos').jtable('openChildTable',
                                             $img.closest('tr'), //Parent row
                                             {
-                                                title: 'Partidas',
+                                                title: 'Ver Partidas',
                                                 editinline: {enable: true},
                                                 actions: {
                                                     listAction: '../../srvObras?parAccion=listchild&varmaster=' + listauxe.record.id,

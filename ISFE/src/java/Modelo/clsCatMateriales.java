@@ -48,7 +48,7 @@ public class clsCatMateriales {
             System.out.println("RESULTADO DE LA COSNULTA" + varSql);
             while (varResultado.next()) {
                 varJsonObjectP.put("codigo", varResultado.getString("codigo"));
-                varJsonObjectP.put("descripcion", varResultado.getString("cdescripcion"));
+                varJsonObjectP.put("descripcion", varResultado.getString("descripcion"));
 
                 varJsonArrayP.add(varJsonObjectP);
             }
